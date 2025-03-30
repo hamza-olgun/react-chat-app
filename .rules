@@ -1,0 +1,88 @@
+Proje Bileşenleri
+1. Kullanıcı Kimlik Doğrulama ve Benzersiz Kimlikler
+Amaç: Platformda her kullanıcının benzersiz bir kimlik ile güvenli bir şekilde kimlik doğrulaması yapmasını sağlamak.
+
+Teknik Detaylar:
+
+Benzersiz Kimlik Sistemi: Kullanıcı kaydı sırasında her kullanıcıya benzersiz bir kimlik (örneğin UUID) atanmalıdır.
+
+Kimlik Doğrulama Protokolü: JSON Web Tokens (JWT) veya oturum tabanlı kimlik doğrulama kullanılmalıdır. Kimlik doğrulama verileri güvenli bir şekilde HTTPS (SSL/TLS) ile iletilmelidir.
+
+Veritabanı Yapılandırması: Kullanıcı kimlik bilgileri güvenli bir şekilde bir veritabanında (örneğin MySQL, PostgreSQL) saklanmalıdır. Parolalar bcrypt gibi güvenli bir algoritma ile şifrelenmelidir.
+
+Oturum Yönetimi: Kullanıcı giriş yaptıktan sonra, oturum süresi belirlenmeli ve uzun süreli hareketsizlikte oturum sona erdirilmelidir. Opsiyonel olarak Google veya GitHub gibi üçüncü taraf kimlik doğrulama (OAuth 2.0) desteği eklenebilir.
+
+Teslim Edilecekler:
+
+Çalışan bir kullanıcı kayıt sistemi.
+
+Oturum veya token tabanlı kimlik doğrulama.
+
+Kullanıcıların benzersiz kimliklere sahip olması.
+
+Kimlik bilgileri şifrelenmiş şekilde iletilmelidir (SSL/TLS).
+
+2. Gerçek Zamanlı Mesajlaşma Sistemi
+Amaç: Gerçek zamanlı, düşük gecikmeli bireysel ve toplu mesajlaşma sistemi geliştirmek.
+
+Teknik Detaylar:
+
+İletişim Protokolü: WebSockets veya MQTT kullanılmalıdır.
+
+Sunucu Yapılandırması: WebSocket bağlantılarını yönetmek için Node.js ve Socket.io veya Python'da Flask-SocketIO kullanılabilir.
+
+Bireysel Mesajlaşma: Kullanıcılar, benzersiz kimlikler ile birbirlerine mesaj gönderebilmelidir.
+
+Toplu Mesajlaşma: Bir mesajın tüm aktif kullanıcılara iletilmesi sağlanmalıdır.
+
+Mesaj Durumu: Gönderildi, teslim edildi ve okundu gibi mesaj durumları eklenmelidir.
+
+Veritabanı Entegrasyonu: Tüm mesajlar MongoDB veya Redis gibi bir veritabanında saklanmalıdır.
+
+Teslim Edilecekler:
+
+WebSocket veya MQTT kullanılarak gerçek zamanlı mesajlaşma.
+
+Bireysel ve toplu mesaj gönderimi.
+
+Mesaj durum takibi (gönderildi, teslim edildi, okundu).
+
+Mesaj kayıtlarının veritabanında saklanması.
+
+3. Sesli Arama Sistemi
+Amaç: WebRTC veya başka bir medya akış protokolü kullanarak birebir sesli görüşme desteği sunmak.
+
+Teknik Detaylar:
+
+WebRTC Protokolü: Peer-to-peer (P2P) iletişim için WebRTC kullanılmalıdır.
+
+STUN/TURN Sunucuları: NAT ve güvenlik duvarı arkasındaki cihazlar için STUN/TURN sunucuları yapılandırılmalıdır.
+
+Sinyalleşme Sunucusu: Kullanıcılar arasında bağlantı kurmak için WebSockets veya HTTP tabanlı bir sinyalleşme sunucusu gereklidir.
+
+Ses Kalitesi: Opus codec kullanılarak düşük gecikmeli ses iletimi sağlanmalıdır.
+
+Çağrı Kontrolleri: Kullanıcıların çağrı başlatma, kabul etme, reddetme ve bitirme gibi kontrolleri olmalıdır.
+
+Teslim Edilecekler:
+
+WebRTC kullanarak çalışan bir sesli arama sistemi.
+
+STUN/TURN sunucularının konfigürasyonu.
+
+WebSockets ile sinyalleşme mekanizması.
+
+Çağrı kontrol özellikleri (kabul etme, reddetme, bitirme).
+
+4. Güvenlik ve Şifreleme
+Amaç: Mesaj ve sesli görüşmelerin güvenli ve gizli kalmasını sağlamak.
+
+Teknik Detaylar:
+
+SSL/TLS Şifreleme: Tüm bağlantılar SSL/TLS ile korunmalıdır.
+
+Uçtan Uca Şifreleme (E2EE): Mesajlar yalnızca alıcı ve gönderici tarafından okunabilecek şekilde şifrelenmelidir.
+
+WebRTC Şifreleme: WebRTC'nin sunduğu DTLS-SRTP protokolü kullanılmalıdır.
+
+Kimlik Doğrulama: Güçlü parola politikaları ve iki faktörlü kimlik doğrulama (2FA) desteklenmelidir. bu projeyi kodlayabilmek için rules hazırla txt olarak
